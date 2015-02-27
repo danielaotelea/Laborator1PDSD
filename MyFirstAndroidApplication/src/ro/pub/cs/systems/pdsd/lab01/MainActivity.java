@@ -23,7 +23,16 @@ public class MainActivity extends Activity {
 		public void onClick(View view) {
 			EditText userNameEditText = (EditText)findViewById(R.id.user_name_edit_text);
 			TextView greetingTextView = (TextView)findViewById(R.id.greeting_text_view);
-			greetingTextView.setAlpha(1);
+		    String d = greetingTextView.getText().toString().replace("x", "");
+			d = d.replace("!", "");
+		    greetingTextView.setText(d + userNameEditText.getText() + "!");
+		    
+		    AlphaAnimation fadeEffect = new AlphaAnimation(1.0f, 0.0f);
+		    fadeEffect.setDuration(TRANSPARENCY_EFFECT_DURATION);
+		    fadeEffect.setFillAfter(true);
+		    greetingTextView.setAnimation(fadeEffect);
+		    
+			greetingTextView.setAlpha(1);	
 		}
 		
 	}
